@@ -1,0 +1,65 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PaginaMaestra.master.cs" Inherits="EMBus.PaginaMaestra" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>EMBus</title>
+    <link rel="icon" type="image/png" href="img/logo.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <form id="form1" runat="server">
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+   
+    <asp:ContentPlaceHolder ID="navbar" runat="server">
+    </asp:ContentPlaceHolder>
+
+        <!-- Comienzo del navbar (menu para cada tipo de usuario) -->
+        <nav class="navbar navbar-inverse">
+         <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+              </button>
+              <a class="navbar-brand" href="Inicio.aspx"> EMBus</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+                <!--<li class="active"><a href="Inicio.aspx">Inicio</a></li>-->
+                <li class="dropdown">
+                  <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#">Administrar <span class="caret"></span></a>-->
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Reportes de Ventas</a></li>
+                    <li><a href="#">Miembros de la Empresa</a></li>
+                    <li><a href="#">Pagos</a></li>
+                    <li><a href="#">Buses</a></li>
+                  </ul>
+                </li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Registro</a></li>-->
+                <li><a href="Ingresar.aspx"><span class="glyphicon glyphicon-log-in"></span> Ingresar</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+    
+    <asp:ContentPlaceHolder ID="footer" runat="server">
+    </asp:ContentPlaceHolder>
+    </form>
+
+    
+
+</body>
+</html>
