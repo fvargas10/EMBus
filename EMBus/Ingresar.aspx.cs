@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Embus.Metodos;
+using System.Text;
+using System.Security.Cryptography;
+using System.IO;
 
 namespace EMBus
 {
@@ -12,27 +15,45 @@ namespace EMBus
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["RUT_USUARIO"] = txtrut.Text;
         }
 
         protected void btnlogin_Click(object sender, EventArgs e)
         {
-            CatalogAdministrador catdmin = new CatalogAdministrador();
-            Administrador admin = new Administrador();
-            int rut = Int32.Parse(txtrut.Text);
-            bool ok = catdmin.IngresoAdmin(rut, txtclave.Text);
-            if (ok)
+            try
             {
-                Session["ok"] = true;
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('LOGIN OK')", true);
-                admin = catdmin.GetNameAdmin(rut, txtclave.Text);
-                Session["NOM_ADMIN"] = admin.Nom_admin.ToString();
-                Response.Redirect("AgregarBus.aspx");
+                CatalogUsuario Catusuario = new CatalogUsuario();
+                string clave_encriptada = Catusuario.encriptar(txtclave.Text);
+                Usuario usuario = new Usuario();
+                int tipousuario = Catusuario.ObtenerIdTipoUsuario(txtrut.Text, clave_encriptada);
+                string rol_usuario;
+                bool estado = Convert.ToBoolean(Catusuario.ObtenerEstadoUsuario(txtrut.Text));
 
+                if (Catusuario.LoginUsuario(txtrut.Text, clave_encriptada) == true && tipousuario == 0 && estado == true)
+                {
+                    rol_usuario = Catusuario.ObtenerRolTipoUsuario(txtrut.Text, clave_encriptada);
+                    Session["ROL_TIPO_USUARIO"] = rol_usuario.ToString();
+                    Response.Redirect("Inicio.aspx");
+                }
+
+                else
+                {
+                    if (Catusuario.LoginUsuario(txtrut.Text, clave_encriptada) == true && tipousuario == 1 && estado == true)
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Ingreso Satisfactorio Contador')", true);
+                        rol_usuario = Catusuario.ObtenerRolTipoUsuario(txtrut.Text, clave_encriptada);
+                        Session["ROL_TIPO_USUARIO"] = rol_usuario.ToString();
+                        Response.Redirect("Inicio.aspx");
+                    }
+                    else
+                    {
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "Success", "<script type='text/javascript'>alert('Lo sentimos, su cuenta se encuentra bloqueada, contacte al administrador');window.location='Ingresar.aspx';</script>'");
+                    }
+                }
             }
-            else
+            catch
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('LOGIN IS WRONG')", true);
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Success", "<script type='text/javascript'>alert('Rut y/o clave inválida');window.location='Ingresar.aspx';</script>'");
             }
         }
     }

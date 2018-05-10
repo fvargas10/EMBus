@@ -7,27 +7,46 @@ namespace Embus.Metodos
 {
     public class DetalleGasto
     {
-        private int id_detallegasto;
+        private int id_detalle_gasto;
+        private string patente;
         private int id_gasto;
-        private int valor_detgasto;
-        private string info_detgasto;
+        private DateTime fecha_detalle_gasto;
+        private int valor_detalle_gasto;
+        private string descripcion_detalle_gasto;        
 
         public DetalleGasto()
         {
         }
 
-        public DetalleGasto(int id_detallegasto, int id_gasto, int valor_detgasto, string info_detgasto)
+        public DetalleGasto(int id_detalle_gasto, string patente, int id_gasto, DateTime fecha_detalle_gasto, int valor_detalle_gasto, string descripcion_detalle_gasto)
         {
-            this.id_detallegasto = id_detallegasto;
+            this.id_detalle_gasto = id_detalle_gasto;
+            this.patente = patente;
             this.id_gasto = id_gasto;
-            this.valor_detgasto = valor_detgasto;
-            this.info_detgasto = info_detgasto;
+            this.fecha_detalle_gasto = fecha_detalle_gasto;
+            this.valor_detalle_gasto = valor_detalle_gasto;
+            this.descripcion_detalle_gasto = descripcion_detalle_gasto;
         }
 
-        public int Id_detallegasto
+        public DetalleGasto(string patente, int id_gasto, DateTime fecha_detalle_gasto, int valor_detalle_gasto, string descripcion_detalle_gasto)
         {
-            get { return id_detallegasto; }
-            set { id_detallegasto = value; }
+            this.patente = patente;
+            this.id_gasto = id_gasto;
+            this.fecha_detalle_gasto = fecha_detalle_gasto;
+            this.valor_detalle_gasto = valor_detalle_gasto;
+            this.descripcion_detalle_gasto = descripcion_detalle_gasto;
+        }      
+
+        public int Id_detalle_gasto
+        {
+            get { return id_detalle_gasto; }
+            set { id_detalle_gasto = value; }
+        }
+
+        public String Patente
+        {
+            get { return patente; }
+            set { patente = value; }
         }
 
         public int Id_gasto
@@ -36,17 +55,22 @@ namespace Embus.Metodos
             set { id_gasto = value; }
         }
 
-        public int Valor_detgasto
+        public DateTime Fecha_detalle_gasto
         {
-            get { return valor_detgasto; }
-            set { valor_detgasto = value; }
+            get { return fecha_detalle_gasto; }
+            set { fecha_detalle_gasto = value; }
         }
 
-        public string Info_detgasto
+        public int Valor_detalle_gasto
         {
-            get { return info_detgasto; }
-            set { info_detgasto = value; }
+            get { return valor_detalle_gasto; }
+            set { valor_detalle_gasto = value; }
         }
 
+        public string Descripcion_detalle_gasto
+        {
+            get { return descripcion_detalle_gasto; }
+            set { descripcion_detalle_gasto = value; }
+        }
     }
 }

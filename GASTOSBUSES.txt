@@ -1,0 +1,10 @@
+gastos:
+petroleo*
+andenes*
+colacion*
+utiles de aseo$
+mantencion >#
+peajes#
+noqueras#
+utiles de oficina#
+OTROS#

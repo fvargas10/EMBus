@@ -8,9 +8,9 @@ namespace Embus.Metodos
     public class Bus
     {
         private string patente;
+        private int id_marca_bus;
         private int id_oficina;
         private string apodo_bus;
-        private string marca_bus;
         private int capacidad_bus;
         private bool estado_bus;
 
@@ -18,13 +18,24 @@ namespace Embus.Metodos
         {
         }
 
-        public Bus(string patente, int id_oficina, string apodo_bus, string marca_bus, int capacidad_bus, bool estado_bus)
+        public Bus(string patente)
         {
             this.patente = patente;
+        }
+
+        public Bus(string patente, int id_marca_bus, int id_oficina, string apodo_bus, int capacidad_bus, bool estado_bus)
+        {
+            this.patente = patente;
+            this.id_marca_bus = id_marca_bus;
             this.id_oficina = id_oficina;
             this.apodo_bus = apodo_bus;
-            this.marca_bus = marca_bus;
             this.capacidad_bus = capacidad_bus;
+            this.estado_bus = estado_bus;
+        }
+
+        public Bus(string patente, bool estado_bus)
+        {
+            this.patente = patente;            
             this.estado_bus = estado_bus;
         }
 
@@ -32,6 +43,12 @@ namespace Embus.Metodos
         {
             get { return patente; }
             set { patente = value; }
+        }
+
+        public int Id_marca_bus
+        {
+            get { return id_marca_bus; }
+            set { id_marca_bus = value; }
         }
 
         public int Id_oficina
@@ -44,12 +61,6 @@ namespace Embus.Metodos
         {
             get { return apodo_bus; }
             set { apodo_bus = value; }
-        }
-
-        public string Marca_bus
-        {
-            get { return marca_bus; }
-            set { marca_bus = value; }
         }
 
         public int Capacidad_bus

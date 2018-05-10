@@ -7,7 +7,7 @@ namespace Embus.Metodos
 {
     public class Administrador
     {
-        private int rut_admin;
+        private string rut_admin;
         private string clave_admin;
         private string nom_admin;
         private int tel_admin;
@@ -22,13 +22,13 @@ namespace Embus.Metodos
             this.nom_admin = nom_admin;
         }
        
-        public Administrador(int rut_admin, string clave_admin)
+        public Administrador(string rut_admin, string clave_admin)
         {
             this.rut_admin = rut_admin;
             this.clave_admin = clave_admin;
         }
 
-        public Administrador(int rut_admin, string clave_admin, string nom_admin, int tel_admin, string dir_admin)
+        public Administrador(string rut_admin, string clave_admin, string nom_admin, int tel_admin, string dir_admin)
         {
             this.rut_admin = rut_admin;
             this.nom_admin = nom_admin;
@@ -37,17 +37,17 @@ namespace Embus.Metodos
             this.clave_admin = clave_admin;
         }
 
-        public int Rut_admin
+        public String Rut_admin
         {
             get { return rut_admin; }
             set { rut_admin = value; }
         }
-        public string Clave_admin
+        public String Clave_admin
         {
             get { return clave_admin; }
             set { clave_admin = value; }
         }
-        public string Nom_admin
+        public String Nom_admin
         {
             get { return nom_admin; }
             set { nom_admin = value; }
@@ -57,11 +57,12 @@ namespace Embus.Metodos
             get { return tel_admin; }
             set { tel_admin = value; }
         }
-        public string Dir_admin
+        public String Dir_admin
         {
             get { return dir_admin; }
             set { dir_admin = value; }
         }
+
     }
 
 }

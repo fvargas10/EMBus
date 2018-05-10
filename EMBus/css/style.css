@@ -1,47 +1,97 @@
 ﻿.navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
+    margin-bottom: 0;
+    border-radius: 0;    
+}
+
+/* Add a gray background color and some padding to the footer */
+footer {
+    background-color: #f2f2f2;
+    padding: 70px;
     
-    /* Add a gray background color and some padding to the footer */
-    footer {
-      background-color: #f2f2f2;
-      padding: 25px;
-    }
-
-
-    body{
-	background-color: #444;
-      -webkit-background-size: auto auto;
-      -moz-background-size: auto auto;
-      -o-background-size: auto auto;
-      background-size: auto auto;
-}
-
-    .vertical-offset-100{
-    padding-top:100px;
 }
 
 
-    #banner
-{
-z-index:0;
+body {
+    background-color: #444;
+    -webkit-background-size: auto auto;
+    -moz-background-size: auto auto;
+    -o-background-size: auto auto;
+    background-size: auto auto;
+}
 
-} 
-
-#transparente
-{
-z-index:1;
-width:100%;
-height:180px;
-background-color:#000;
-border:1px solid black;
-opacity:0.6;
-filter:alpha(opacity=60);
+.vertical-offset-100 {
+    padding-top: 100px;
 }
 
 
+#banner {
+    z-index: 0;
+}
 
+#transparente {
+    z-index: 1;
+    width: 100%;
+    height: 180px;
+    background-color: #000;
+    border: 1px solid black;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+}
+
+
+.logo {
+    width: 100px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+    padding-left: -10px;
+}
+
+#fondo {
+    background-image: url("images/asroma/coliseo2.jpg");
+}
+
+.slider {
+    width: 100%;
+    display: block;
+    margin: auto;
+}
+
+.footer-distributed .footer-icons{
+	margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
 
 
 

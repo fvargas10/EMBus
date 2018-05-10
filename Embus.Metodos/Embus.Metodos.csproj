@@ -41,19 +41,30 @@
   <ItemGroup>
     <Compile Include="Administrador.cs" />
     <Compile Include="Arqueo.cs" />
-    <Compile Include="Asiste.cs" />
     <Compile Include="Auxiliar.cs" />
     <Compile Include="Boleto.cs" />
     <Compile Include="Bus.cs" />
+    <Compile Include="BusinessRulesException.cs" />
     <Compile Include="CatalogAdministrador.cs" />
-    <Compile Include="CatalogConduce.cs" />
-    <Compile Include="Conduce.cs" />
+    <Compile Include="CatalogAuxiliar.cs" />
+    <Compile Include="CatalogBoleto.cs" />
+    <Compile Include="CatalogBus.cs" />
+    <Compile Include="CatalogCaja.cs" />
+    <Compile Include="CatalogConductor.cs" />
+    <Compile Include="CatalogContador.cs" />
+    <Compile Include="CatalogDetalleGasto.cs" />
+    <Compile Include="CatalogMarca.cs" />
+    <Compile Include="CatalogPrestamo.cs" />
+    <Compile Include="CatalogUsuario.cs" />
     <Compile Include="Conductor.cs" />
     <Compile Include="Contador.cs" />
     <Compile Include="DetalleGasto.cs" />
     <Compile Include="Gasto.cs" />
+    <Compile Include="Marca.cs" />
     <Compile Include="Oficina.cs" />
+    <Compile Include="Prestamo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Embus.Datos\Embus.Datos.csproj">

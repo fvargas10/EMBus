@@ -40,6 +40,14 @@ namespace Embus.Datos
             this.command.CommandText = sql;
         }
 
+        public void CreateCommandSP(string sql)
+        {
+            this.command = factory.CreateCommand();
+            this.command.Connection = connection;
+            this.command.CommandType = CommandType.StoredProcedure; //3 opciones para trabajar (consultas)
+            this.command.CommandText = sql;
+        }
+
         public DbDataReader Query()
         {
             return command.ExecuteReader(); //devuelve los valores

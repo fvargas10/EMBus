@@ -7,7 +7,7 @@ namespace Embus.Metodos
 {
     public class Contador
     {
-        private int rut_cont;
+        private string rut_cont;
         private string clave_cont;
         private string nom_cont;
         private int tel_cont;
@@ -17,7 +17,19 @@ namespace Embus.Metodos
         {
         }
 
-        public Contador(int rut_cont, string clave_cont, string nom_cont, int tel_cont, string dir_cont)
+        public Contador(string nom_cont)
+        {
+            this.nom_cont = nom_cont;
+        }
+
+        public Contador(string rut_cont, string clave_cont)
+        {
+            this.rut_cont = rut_cont;
+            this.clave_cont = clave_cont;
+        }
+
+
+        public Contador(string rut_cont, string clave_cont, string nom_cont, int tel_cont, string dir_cont)
         {
             this.rut_cont = rut_cont;
             this.clave_cont = clave_cont;
@@ -26,7 +38,7 @@ namespace Embus.Metodos
             this.dir_cont = dir_cont;
         }
 
-        public int Rut_cont
+        public string Rut_cont
         {
             get { return rut_cont; }
             set { rut_cont = value; }

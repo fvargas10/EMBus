@@ -1,0 +1,3 @@
+UPDATE USUARIO
+SET CLAVE_USUARIO = (select CONVERT(VARCHAR(32), HashBytes('MD5', 'fvargas'), 2))
+WHERE CLAVE_USUARIO='fvargas';

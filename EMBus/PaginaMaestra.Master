@@ -1,65 +1,151 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PaginaMaestra.master.cs" Inherits="EMBus.PaginaMaestra" %>
 
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="es-CL">
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>EMBus</title>
-    <link rel="icon" type="image/png" href="img/logo.png" />
+    <link rel="icon" type="img/png" href="img/embus.png" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body>
+<body style="background-color: #96C1FF">
     <form id="form1" runat="server">
-    <script src="Scripts/jquery-1.9.1.min.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
-   
-    <asp:ContentPlaceHolder ID="navbar" runat="server">
-    </asp:ContentPlaceHolder>
 
-        <!-- Comienzo del navbar (menu para cada tipo de usuario) -->
-        <nav class="navbar navbar-inverse">
-         <div class="container-fluid">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>                        
-              </button>
-              <a class="navbar-brand" href="Inicio.aspx"> EMBus</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav">
-                <!--<li class="active"><a href="Inicio.aspx">Inicio</a></li>-->
-                <li class="dropdown">
-                  <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#">Administrar <span class="caret"></span></a>-->
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Reportes de Ventas</a></li>
-                    <li><a href="#">Miembros de la Empresa</a></li>
-                    <li><a href="#">Pagos</a></li>
-                    <li><a href="#">Buses</a></li>
-                  </ul>
-                </li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Registro</a></li>-->
-                <li><a href="Ingresar.aspx"><span class="glyphicon glyphicon-log-in"></span> Ingresar</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-    
-    <asp:ContentPlaceHolder ID="footer" runat="server">
-    </asp:ContentPlaceHolder>
+        <script src="Scripts/bootstrap.min.js"></script>
+        <asp:ContentPlaceHolder ID="navbar" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <section>
+            <!-- Comienzo del navbar (menu para cada tipo de usuario) -->
+            <nav style="background-color: #4682B4" class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="Inicio.aspx">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <img src="img/losmuermos.png" style="padding-top: 10px; float: left; width: 110px">
+                                    </td>
+                                    <td>
+                                        <img src="img/embus.png" style="padding-top: -10px; float: right; width: 40px" />
+                                    </td>
+                                    <td>
+                                        <img src="img/puertomontt.png" style="padding-top: 10px; float: right; width: 110px" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <!--Determinar el tipo de menu segun el usuario que ingrese al sistema-->
+                            <% Embus.Metodos.CatalogUsuario catusuario = new Embus.Metodos.CatalogUsuario(); %>
+                            <%  if (lblusuario.Text != "")
+                                {%>
+                            <% int tipousuario = 0; %>
+                            <% tipousuario = catusuario.ObtenerIdTipoUsuarioPorRol(lblusuario.Text); %>
+                            <% Session["ID_TIPO_USUARIO"] = tipousuario.ToString(); %>
+
+                            <!--Condicion para determinar el tipo de usuario ingresado y el menu que se mostrará-->
+                            <% if (tipousuario == 0)
+                               { %>
+                            <% this.labelrut.Visible = false; %>
+
+                            <!--Menú dropdown para el ingreso del administrador-->
+                            <li style="background-color: #22647c;" class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="color: #fff"></span>
+                                    <asp:Label ID="mensaje1" runat="server" Text="  Bienvenido " ForeColor="White"></asp:Label>
+                                    <asp:Label ID="lblusuario" runat="server" Text=" Label" ForeColor="White"></asp:Label></a>
+                                <ul style="background-color: #96C1FF" class="dropdown-menu ">
+                                    <li style="color: #fff" class="dropdown-header">Administrar</li>
+                                    <li><a href="AgregarMarcaBus.aspx">Marcas</a></li>
+                                    <li><a href="AdministrarBus.aspx">Buses</a></li>
+                                    <li><a href="MiembrosEmpresa.aspx">Miembros de la Empresa</a></li>
+                                    <li><a href="AdministrarUsuario.aspx">Agregar un nuevo Contador</a></li>
+
+                                    <li class="divider"></li>
+
+                                    <li style="color: #fff" class="dropdown-header">Producción</li>
+                                    <li><a href="ModificarTarifas.aspx">Modificar Tarifas</a></li>
+                                    <li><a href="VerGananciasBus.aspx">Ver Gráficos de Ventas</a></li>
+                                    <li><a href="VerPorcentajesConductor.aspx">Pago Conductor</a></li>
+                                    <li><a href="VerPorcentajesAuxiliar.aspx">Pago Auxiliar</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="ActualizarClave.aspx">Modificar Contraseña</a></li>
+
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="Salir.aspx"><span style="color: #AA0606" class="glyphicon glyphicon-log-out"></span>
+                                            <asp:Label ForeColor="#AA0606" ID="Label3" runat="server" Text="Cerrar Sesión"></asp:Label></a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <% }
+                               else
+                               { %>
+                            <!--Condicion por si el usuario ingresado es de tipo contador (1)-->
+                            <% if (tipousuario == 1)
+                               { %>
+                            <% this.labelrut.Visible = false; %>
+
+                            <!--Menú dropdown para el ingreso del contador-->
+                            <li style="background-color: #22647c;" class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="color: #fff"></span>
+                                    <asp:Label ID="mensaje" runat="server" Text="Bienvenido " ForeColor="White"></asp:Label>
+                                    <asp:Label ID="lblcontador" runat="server" Text=" Label" ForeColor="White"></asp:Label></a>
+                                <ul style="background-color: #96C1FF" class="dropdown-menu ">
+                                    <li style="color: #fff" class="dropdown-header">Arqueo Diario</li>
+                                    <li><a href="Caja.aspx">Caja</a></li>
+                                    <li><a href="Prestamos.aspx">Préstamos</a></li>
+
+                                    <li class="divider"></li>
+
+                                    <li style="color: #fff" class="dropdown-header">Producción</li>
+                                    <li><a href="VerPorcentajesConductor.aspx">Pago Conductor</a></li>
+                                    <li><a href="VerPorcentajesAuxiliar.aspx">Pago Auxiliar</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="ActualizarClave.aspx">Modificar Contraseña</a></li>
+
+                                    <li class="divider"></li>
+                                    <li><a href="Salir.aspx"><span style="color: #AA0606" class="glyphicon glyphicon-log-out  "></span>
+                                        <asp:Label ForeColor="#AA0606" ID="Label2" runat="server" Text="Cerrar Sesión"></asp:Label></a></li>
+                                </ul>
+                                <% } %>
+                                <% } %>
+                                <% } %>
+                            </li>
+                            <li>
+                                <a style="background-color: #22647c" href="Ingresar.aspx">
+                                    <span style="color: #ffffff" class="glyphicon glyphicon-user "></span>
+                                    <asp:Label ForeColor="White" ID="labelrut" runat="server" Text="Ingresar"></asp:Label>
+                                </a>
+                            </li>
+                            <!--style="display:none ocultar elementos html-->
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </section>
+
+        <asp:ContentPlaceHolder ID="footer" runat="server">
+        </asp:ContentPlaceHolder>
     </form>
-
-    
-
 </body>
 </html>
+
+
+

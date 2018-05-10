@@ -1,0 +1,7 @@
+---se crea el procedimiento almacenado
+create procedure loginusuario
+---se declaran los parametros que usaremos
+@rut varchar(10),@clave varchar(50)
+as
+---se hace un insert a la tabla usuarios y se envian los parametros
+SELECT * FROM USUARIO WHERE RUT_USUARIO=@rut AND CLAVE_USUARIO=@clave

@@ -19,6 +19,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,7 +40,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itextsharp.xtra">
+      <HintPath>.\itextsharp.xtra.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -57,19 +68,22 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AgregarBus.aspx" />
-    <Content Include="Arqueo.aspx" />
-    <Content Include="ArqueoCaja.aspx" />
+    <Content Include="ActualizarClave.aspx" />
+    <Content Include="AdministrarBus.aspx" />
+    <Content Include="AdministrarUsuario.aspx" />
+    <Content Include="AgregarMarcaBus.aspx" />
+    <Content Include="Caja.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="CrearOficina.aspx" />
+    <Content Include="FlujoDeCaja.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="HtmlPage1.html" />
     <Content Include="Ingresar.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="js\formLogin.js" />
+    <Content Include="MiembrosEmpresa.aspx" />
+    <Content Include="ModificarTarifas.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -81,42 +95,66 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="PaginaMaestra.Master" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="pdf.aspx" />
+    <Content Include="Prestamos.aspx" />
+    <Content Include="RecuperarClave.aspx" />
+    <Content Include="Salir.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="css\style.css" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jspdf.debug.js" />
+    <Content Include="Scripts\rut.js" />
+    <Content Include="VerGananciasBus.aspx" />
+    <Content Include="VerPorcentajesAuxiliar.aspx" />
+    <Content Include="VerPorcentajesConductor.aspx" />
     <Content Include="Web.config" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgregarBus.aspx.cs">
-      <DependentUpon>AgregarBus.aspx</DependentUpon>
+    <Compile Include="ActualizarClave.aspx.cs">
+      <DependentUpon>ActualizarClave.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AgregarBus.aspx.designer.cs">
-      <DependentUpon>AgregarBus.aspx</DependentUpon>
+    <Compile Include="ActualizarClave.aspx.designer.cs">
+      <DependentUpon>ActualizarClave.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Arqueo.aspx.cs">
-      <DependentUpon>Arqueo.aspx</DependentUpon>
+    <Compile Include="AdministrarBus.aspx.cs">
+      <DependentUpon>AdministrarBus.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Arqueo.aspx.designer.cs">
-      <DependentUpon>Arqueo.aspx</DependentUpon>
+    <Compile Include="AdministrarBus.aspx.designer.cs">
+      <DependentUpon>AdministrarBus.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ArqueoCaja.aspx.cs">
-      <DependentUpon>ArqueoCaja.aspx</DependentUpon>
+    <Compile Include="AdministrarUsuario.aspx.cs">
+      <DependentUpon>AdministrarUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ArqueoCaja.aspx.designer.cs">
-      <DependentUpon>ArqueoCaja.aspx</DependentUpon>
+    <Compile Include="AdministrarUsuario.aspx.designer.cs">
+      <DependentUpon>AdministrarUsuario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CrearOficina.aspx.cs">
-      <DependentUpon>CrearOficina.aspx</DependentUpon>
+    <Compile Include="AgregarMarcaBus.aspx.cs">
+      <DependentUpon>AgregarMarcaBus.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CrearOficina.aspx.designer.cs">
-      <DependentUpon>CrearOficina.aspx</DependentUpon>
+    <Compile Include="AgregarMarcaBus.aspx.designer.cs">
+      <DependentUpon>AgregarMarcaBus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Caja.aspx.cs">
+      <DependentUpon>Caja.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Caja.aspx.designer.cs">
+      <DependentUpon>Caja.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FlujoDeCaja.aspx.cs">
+      <DependentUpon>FlujoDeCaja.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FlujoDeCaja.aspx.designer.cs">
+      <DependentUpon>FlujoDeCaja.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ingresar.aspx.cs">
       <DependentUpon>Ingresar.aspx</DependentUpon>
@@ -132,6 +170,20 @@
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MiembrosEmpresa.aspx.cs">
+      <DependentUpon>MiembrosEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MiembrosEmpresa.aspx.designer.cs">
+      <DependentUpon>MiembrosEmpresa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarTarifas.aspx.cs">
+      <DependentUpon>ModificarTarifas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarTarifas.aspx.designer.cs">
+      <DependentUpon>ModificarTarifas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PaginaMaestra.Master.cs">
       <DependentUpon>PaginaMaestra.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -139,7 +191,56 @@
     <Compile Include="PaginaMaestra.Master.designer.cs">
       <DependentUpon>PaginaMaestra.Master</DependentUpon>
     </Compile>
+    <Compile Include="pdf.aspx.cs">
+      <DependentUpon>pdf.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pdf.aspx.designer.cs">
+      <DependentUpon>pdf.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Prestamos.aspx.cs">
+      <DependentUpon>Prestamos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Prestamos.aspx.designer.cs">
+      <DependentUpon>Prestamos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecuperarClave.aspx.cs">
+      <DependentUpon>RecuperarClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecuperarClave.aspx.designer.cs">
+      <DependentUpon>RecuperarClave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Salir.aspx.cs">
+      <DependentUpon>Salir.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Salir.aspx.designer.cs">
+      <DependentUpon>Salir.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VerGananciasBus.aspx.cs">
+      <DependentUpon>VerGananciasBus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VerGananciasBus.aspx.designer.cs">
+      <DependentUpon>VerGananciasBus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VerPorcentajesAuxiliar.aspx.cs">
+      <DependentUpon>VerPorcentajesAuxiliar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VerPorcentajesAuxiliar.aspx.designer.cs">
+      <DependentUpon>VerPorcentajesAuxiliar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VerPorcentajesConductor.aspx.cs">
+      <DependentUpon>VerPorcentajesConductor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VerPorcentajesConductor.aspx.designer.cs">
+      <DependentUpon>VerPorcentajesConductor.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.Debug.config">
@@ -151,6 +252,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="img\" />
+    <Folder Include="PdfPagoConductores\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Embus.Metodos\Embus.Metodos.csproj">
@@ -183,6 +285,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -1,0 +1,5 @@
+UPDATE ARQUEO
+SET PATENTE = 'fbpc83'
+WHERE PATENTE='cvpd45';
+
+
